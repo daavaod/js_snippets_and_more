@@ -132,3 +132,101 @@ const combined = ages
   .reduce((a, b) => a + b, 0);
 
 console.log(combined);
+
+// Get the intersection of two arrays
+const intersection = (x, y) => {
+  const set = new Set(x);
+  return [...new Set(y.filter((i) => set.has(i)))];
+};
+
+// 🎉 [2]
+console.log(intersection([1, 2, 2, 3], [2, 2, 5]));
+
+// Group arrays by function
+const groupBy = (arr, fn) =>
+  arr.map(fn).reduce((acc, cur, i) => {
+    acc[cur] = [...(acc[cur] || []), arr[i]];
+    return acc;
+  }, {});
+
+// 🎉 { number: [ 1, 3 ], string: [ '2', '4' ] }
+console.log(groupBy([1, '2', 3, '4'], (val) => typeof val));
+
+// 🎉 { '1': [ [ 1 ], [ 3 ] ], '2': [ [ 1, 2 ], [ 3, 4 ] ] }
+console.log(groupBy([[1], [1, 2], [3], [3, 4]], (val) => val.length));
+
+// Format the bytes
+const formatBytes = (bytes, decimals = 2) => {
+  if (bytes < 0) return '';
+  if (bytes <= 1) return `${bytes} B`;
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return `${parseFloat((bytes / k ** i).toFixed(dm))}${sizes[i]}`;
+};
+
+// 🎉 1KB
+console.log(formatBytes(1024));
+
+// 🎉 1MB
+console.log(formatBytes(1024 ** 2));
+
+// Format money
+const formatMoney = (num) =>
+  num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+// 🎉 '20,220,316'
+console.log(formatMoney(20220316));
+
+// Generate random string with specified length
+const randomString = (len) => {
+  const chars = 'abcdefhijkmnprstwxyz123456789ABCDEFGHJKMNPQRSTWXYZ';
+  const totalLength = chars.length;
+  let randomStr = '';
+
+  for (let i = 0; i < len; i += 1) {
+    randomStr += chars.charAt(Math.floor(Math.random() * totalLength));
+  }
+  return randomStr;
+};
+
+// 🎉 'k4RrA5'
+console.log(randomString(6));
+
+// Full screen browser
+const toFullScreen = () => {
+  document.documentElement[
+    [
+      'requestFullscreen',
+      'mozRequestFullScreen',
+      'msRequestFullscreen',
+      'webkitRequestFullscreen',
+    ].find((fn) => typeof document.documentElement[fn] === 'function')
+  ]?.();
+};
+
+// Valid JSON
+const isValidJSON = (str) => {
+  try {
+    JSON.parse(str);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+// 🎉 true
+console.log(isValidJSON(JSON.stringify({ age: 30 })));
+
+// 🎉 false
+console.log(isValidJSON('{age:30}'));
+
+
+
+
+
+
+
+
+
