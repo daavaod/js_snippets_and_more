@@ -222,7 +222,14 @@ console.log(isValidJSON(JSON.stringify({ age: 30 })));
 // 🎉 false
 console.log(isValidJSON('{age:30}'));
 
+// array uniques
+const numbers = [1,2,2,3,4,4,4,5,6,7,7]
+const names = ["John", "Mads", "Bob", "John", "Bob"]
 
+const uniqueNumbers = [...new Set(numbers)]
+// [1,2,3,4,5,6,7]
+const uniqueNames = [...new Set(names)]
+// ['John', 'Mads', 'Bob']
 
 
 
