@@ -275,7 +275,10 @@ https://www.interviewbit.com/javascript-interview-questions
 "wonderful".toUpperCase()         // WONDERFUL
 "wonderful".toLowerCase()         // wonderful
 
-//
+// simple sort by date desc
+array.sort(function(a,b){
+  return new Date(b.date) - new Date(a.date);
+});
 
 
 
