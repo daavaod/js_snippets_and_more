@@ -318,5 +318,8 @@ var cars = [{ make: 'audi', model: 'r8', year: '2012' }, { make: 'audi', model: 
 
 console.log(result);
 
+// Month and Date in 2 digit format?
+("0" + this.getDate()).slice(-2) // date
+("0" + (this.getMonth() + 1)).slice(-2) // month
 
 
