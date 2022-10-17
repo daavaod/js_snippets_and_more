@@ -350,4 +350,23 @@ console.log(result);
 ("0" + this.getDate()).slice(-2) // date
 ("0" + (this.getMonth() + 1)).slice(-2) // month
 
+// set css var
+setCustomStyle() {
+  // get document root
+  const root = document.querySelector(":root");
+
+  // get table name form table title
+  let tableName = this.title.split(" ")[0].toLowerCase();
+
+  // set table name class
+  this.classSuffix = tableName;
+
+  // round up items in columns
+  let columnItems = Math.ceil(this.documents.length / 2);
+
+  // set global var style
+  root.style.setProperty(`--column-items-${tableName}`, columnItems);
+},
+
+
 
