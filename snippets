@@ -395,3 +395,17 @@ var encode = function( s ) {
 	return new Uint8Array( out );
 }
 
+// Updating properties in multiple objects
+const arr1 = [
+  {id: 1, name: 'Alice'},
+  {id: 1, name: 'Bob'},
+  {id: 3, name: 'Charlie'},
+];
+const newArr = arr1.map(obj => {
+  if (obj.id === 1) {
+    return {...obj, name: 'Alfred'};
+  }
+
+  return obj;
+});
+
