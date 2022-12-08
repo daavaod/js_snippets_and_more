@@ -259,6 +259,9 @@ const uniqueNumbers = [...new Set(numbers)]
 const uniqueNames = [...new Set(names)]
 // ['John', 'Mads', 'Bob']
 
+// unique objects from an array by key
+let countriesUnique = Object.values(countries.reduce((acc:any, obj:any) => ({ ...acc, [obj.country]: obj }), {}));
+
 // javascript-interview-questions
 https://www.interviewbit.com/javascript-interview-questions
 
