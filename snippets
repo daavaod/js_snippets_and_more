@@ -353,6 +353,12 @@ console.log(result);
 ("0" + this.getDate()).slice(-2) // date
 ("0" + (this.getMonth() + 1)).slice(-2) // month
 
+// Map months by custom name
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+const month = monthNames[new Date(obj.start).getMonth()],
+
 // set css var
 setCustomStyle() {
   // get document root
