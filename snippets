@@ -446,3 +446,39 @@ const hextToRgb = (color: any) => {
 	return rgb
 }
 
+// group and sort data by month (react example)
+const groupByMonth = (data: any) => {
+	// group data by month
+	const result = data.reduce(function (r:any, a:any) {
+	    r[a.mesec] = r[a.mesec] || [];
+	    r[a.mesec].push(a);
+	    return r;
+	}, Object.create(null));
+
+	return result
+}
+const sortByMonth = (data: any) => {
+	const monthNames = ["January", "February", "March", "April", "May", "June",
+	    "July", "August", "September", "October", "November", "December"
+	];
+	const addMonth = data.map((obj:any) => {
+	    return {
+	    mesec: monthNames[new Date(obj.start).getMonth()],
+	    ...obj
+	    }
+	})
+
+	const newValues = groupByMonth(addMonth);
+
+	// convert to array
+	let entries = Object.entries(newValues);
+
+	// sort array by monthNames
+	const sortByMonth = entries.sort(function(a:any, b:any){
+	    return monthNames.indexOf(a[0]) - monthNames.indexOf(b[0])
+	});
+
+	// set filtered events by month
+	setCalendarEventsMonth(sortByMonth)
+}
+
