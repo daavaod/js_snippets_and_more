@@ -482,3 +482,28 @@ const sortByMonth = (data: any) => {
 	setCalendarEventsMonth(sortByMonth)
 }
 
+// change if else code
+// from
+const getPriceByName = (name) => {
+  if (name === '🍔') {
+    return 30
+  } else if (name === '🍨') {
+    return 20
+  } else if (name === '🍿') {
+    return 10
+  }
+}
+console.log(getPriceByName('🍔')) // 30
+
+// to
+const getPriceByName = (name) => {
+  const foodMap = {
+    '🍔': 30,
+    '🍨': 20,
+    '🍿': 10,
+    // You can add new food here
+    // ...
+  }
+  return foodMap[ name ]
+}
+console.log(getPriceByName('🍔')) // 30
