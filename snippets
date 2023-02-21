@@ -507,3 +507,26 @@ const getPriceByName = (name) => {
   return foodMap[ name ]
 }
 console.log(getPriceByName('🍔')) // 30
+
+// search delay
+let timer;              // Timer identifier
+const waitTime = 500;   // Wait time in milliseconds 
+
+// Search function
+const search = (text) => {
+    // TODO: Make HTTP Request HERE
+};
+
+// Listen for `keyup` event
+const input = document.querySelector('#input-text');
+input.addEventListener('keyup', (e) => {
+    const text = e.currentTarget.value;
+
+    // Clear timer
+    clearTimeout(timer);
+
+    // Wait for X ms and then process the request
+    timer = setTimeout(() => {
+        search(text);
+    }, waitTime);
+});
