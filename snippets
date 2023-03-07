@@ -530,3 +530,18 @@ input.addEventListener('keyup', (e) => {
         search(text);
     }, waitTime);
 });
+
+// url params
+
+urlParams() {
+    const url = window.location.href;
+    const stringItems = new URLSearchParams(url);
+
+    const params = {};
+
+    for(const [key, value] of stringItems) {
+	params[key] = value;
+    }
+
+    return params;
+},
