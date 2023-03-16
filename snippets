@@ -559,3 +559,12 @@ console.log(hasDST(new Date(2022, 1, 1))); // 👉️ false
 
 // 👇️ 1st of September 2022
 console.log(hasDST(new Date(2022, 8, 1))); // 👉️ true
+
+// rrule plugin
+rrulePlugin.recurringTypes[0].expand = function (errd, fr, de) {
+  return errd.rruleSet.between(
+    fr.start,
+    fr.end,
+    true, // inclusive (will give extra events at start, see https://github.com/jakubroztocil/rrule/issues/84)
+  ).map(date => new Date(de.createMarker(date).getTime() + date.getTimezoneOffset() * 60 * 1000))
+}
