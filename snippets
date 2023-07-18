@@ -568,3 +568,7 @@ rrulePlugin.recurringTypes[0].expand = function (errd, fr, de) {
     true, // inclusive (will give extra events at start, see https://github.com/jakubroztocil/rrule/issues/84)
   ).map(date => new Date(de.createMarker(date).getTime() + date.getTimezoneOffset() * 60 * 1000))
 }
+
+// old school url params
+var search = location.search.substring(1);
+JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
