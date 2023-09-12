@@ -572,3 +572,56 @@ rrulePlugin.recurringTypes[0].expand = function (errd, fr, de) {
 // old school url params
 var search = location.search.substring(1);
 JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+
+// Compare two arrays of objects
+let mechanical_students_details = [
+	{
+		student_id: 1,
+		student_name: "Ramesh",
+		student_age: 22,
+	},
+	{
+		student_id: 2,
+		student_name: "Suresh",
+		student_age: 26,
+	},
+];
+
+let cse_students_details = [
+	{
+		student_id: 1,
+		student_name: "Aman",
+		student_age: 23,
+	},
+	{
+		student_id: 2,
+		student_name: "Chaitanya",
+		student_age: 24,
+	},
+	{
+		student_id: 3,
+		student_name: "Dharmendra",
+		student_age: 21,
+	},
+];
+
+let compareTwoArrayOfObjects = (
+	first_array_of_objects,
+	second_array_of_objects
+) => {
+	return (
+		first_array_of_objects.length === second_array_of_objects.length &&
+		first_array_of_objects.every((element_1) =>
+			second_array_of_objects.some(
+				(element_2) =>
+					element_1.student_name === element_2.student_name &&
+					element_1.student_age === element_2.student_age
+			)
+		)
+	);
+};
+
+console.log(
+	"Are these passed in array of objects equal? : " +
+	compareTwoArrayOfObjects(mechanical_students_details, cse_students_details)
+);
