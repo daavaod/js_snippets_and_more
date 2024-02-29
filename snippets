@@ -639,5 +639,9 @@ if (ua.indexOf('safari') != -1) {
 // flatten array old way
 [].concat.apply([], newFilter)
 
-// remove property from obj - a: prop to remove; rest: new obj;
+// remove property from obj
 const { a, ...rest } = { a: 1, b: 2, c: 3 };
+
+const myObject = {"ircEvent": "PRIVMSG", "method": "newURI", "regex": "^http://.*"};
+const { regex, ...newObject } = myObject;
+console.log(newObject);
