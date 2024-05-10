@@ -645,3 +645,30 @@ const { a, ...rest } = { a: 1, b: 2, c: 3 };
 const myObject = {"ircEvent": "PRIVMSG", "method": "newURI", "regex": "^http://.*"};
 const { regex, ...newObject } = myObject;
 console.log(newObject);
+
+//rect recursive components
+
+function ListItem({ listItem }) {
+  const { name, url, children } = listItem;
+  return (
+    <li>
+      <p>
+        {name} - {url}
+      </p>
+      {Array.isArray(children) && <List list={children} />}
+    </li>
+  );
+}
+
+function List({ list }) {
+  return (
+    <ul>
+      {list.map((listItem) => (
+        <ListItem key={listItem.name} listItem={listItem} />
+      ))}
+    </ul>
+  );
+}
+function App() {
+  return <List list={menuData} />;
+}
