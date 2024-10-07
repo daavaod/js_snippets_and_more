@@ -672,3 +672,43 @@ function List({ list }) {
 function App() {
   return <List list={menuData} />;
 }
+// download multiple files - import JSZip from 'JSZip'
+const urls = ['/3/3b/Hulda_Klagers_house_and_lawn.jpg/320px-Hulda_Klagers_house_and_lawn.jpg', '/1/15/P%C3%A8re-Lachaise_-_Division_79_-_Floriot_02.jpg/320px-P%C3%A8re-Lachaise_-_Division_79_-_Floriot_02.jpg', '/a/a6/V37-20180910-055_%2845088120261%29.jpg/320px-V37-20180910-055_%2845088120261%29.jpg', '/2/2b/MormantulLuiAmzaPellea_%284%29.JPG/360px-MormantulLuiAmzaPellea_%284%29.JPG', '/f/f8/Launch_of_LAWRENCE_LCCN2014710971.tif/lossy-page1-174px-Launch_of_LAWRENCE_LCCN2014710971.tif.jpg']
+.map((url) => 'https://upload.wikimedia.org/wikipedia/commons/thumb' + url);
+
+fetchBlobs(urls)
+  .then(pack)
+  .then((zipFile) => dl.href = URL.createObjectURL(zipFile));
+
+function fetchBlobs(urls) {
+  return Promise.all(
+    urls.map((url) =>
+      fetch(url)
+      .then((resp) => resp.blob())
+      .then((blob) => {
+        // store the file name
+        blob.name = url.slice(url.lastIndexOf('/') + 1)
+        return blob;
+      })
+    )
+  );
+}
+function pack(blobs) {
+  const zip = new JSZip();
+  const folder = zip.folder('my_images');
+  blobs.forEach((blob) => folder.file(blob.name, blob));
+  return zip.generateAsync({type : "blob"});
+}
+// add link to page
+<a id="dl" download="images.zip">download</a>
+// or create and execute
+var a = document.createElement('a');
+        var linkText = document.createTextNode("download certificates");
+        a.appendChild(linkText);
+        a.title = "download certificates";
+        a.href = urlZip;
+        a.download
+        a.click()
+
+
+//
