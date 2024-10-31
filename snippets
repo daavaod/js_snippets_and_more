@@ -711,4 +711,36 @@ var a = document.createElement('a');
         a.click()
 
 
+// Get the Differences Between Two Arrays of Objects in JavaScript
+const arr1 = [
+  {id: 1, name: 'Tommy', age: 12},
+  {id: 2, name: 'Alphonse', age: 21},
+  {id: 3, name: 'Albert', age: 25},
+  {id: 4, name: 'Sophia', age: 23},
+  {id: 5, name: 'Arsene', age: 30},
+  {id: 6, name: 'Kevin', age: 30},
+  {id: 7, name: 'Rebecca', age: 31}
+];
+
+const arr2 = [
+  {id: 1, name: 'Tommy', age: 12},
+  {id: 2, name: 'Sophia', age: 23},
+  {id: 3, name: 'Albert', age: 25},
+  {id: 4, name: 'Kevin', age: 27},
+  {id: 5, name: 'Arsene', age: 30},
+  {id: 6, name: 'Maxime', age: 17}
+];
+
+function getDifference(array1, array2) {
+  const diffFromA1toA2 =  array1.filter(
+    obj1 => !array2.some(obj2 => obj1.name === obj2.name && obj1.age === obj2.age)
+  );
+
+  const diffFromA2toA1 =  array2.filter(
+    obj2 => !array1.some(obj1 => obj2.name === obj1.name && obj2.age === obj1.age)
+  );
+
+  return [...diffFromA1toA2, ...diffFromA2toA1];
+}
+
 //
