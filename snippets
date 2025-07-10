@@ -743,4 +743,25 @@ function getDifference(array1, array2) {
   return [...diffFromA1toA2, ...diffFromA2toA1];
 }
 
-//
+// find unique number in array
+function findNonRepeatingNumbersFilter(arr) {
+  return arr.filter(num => arr.indexOf(num) === arr.lastIndexOf(num));
+}
+
+// flip bits
+function flippingBits(n) {
+    // Write your code here
+    const binary32 = n.toString(2).padStart(32, '0');
+
+    const value = binary32.split('').map((char) => {
+      if(char === "0") {
+        return "1"
+      } else {
+        return "0"
+      }
+    }).join('')
+
+    return parseInt(value, 2)
+}
+
+
