@@ -764,4 +764,29 @@ function flippingBits(n) {
     return parseInt(value, 2)
 }
 
+// time conversion
+// Input 07:05:45PM => Output 19:05:45
+function timeConversion(s) {
+    // Write your code here
+    const isPm = s.toLowerCase().includes('pm');
+    const date = s.split('PM')[0].split(':')
+    const hours = parseInt(date[0])
+    const minutes = parseInt(date[1], 10) < 10 ? '0' + parseInt(date[1], 10) : parseInt(date[1], 10)
+    const seconds = parseInt(date[2]) < 10 ? '0' + parseInt(date[2]) : parseInt(date[2])
+    
+    if(isPm) {
+        if(hours !== 12) {
+            return `${hours + 12}:${minutes}:${seconds}`
+        } else {
+            return `${hours < 10 ? '0' + hours : hours}:${minutes}:${seconds}`
+        }
+    } else {
+        if(hours === 12) {
+            return `${'00'}:${minutes}:${seconds}`
+        } else {
+            return `${hours < 10 ? '0' + hours : hours}:${minutes}:${seconds}`
+        }
+    }
+}
+
 
