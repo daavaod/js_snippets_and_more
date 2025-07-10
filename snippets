@@ -743,7 +743,7 @@ function getDifference(array1, array2) {
   return [...diffFromA1toA2, ...diffFromA2toA1];
 }
 
-// find unique number in array
+// find unique numbers in an array (numbers that does not repeat)
 function findNonRepeatingNumbersFilter(arr) {
   return arr.filter(num => arr.indexOf(num) === arr.lastIndexOf(num));
 }
