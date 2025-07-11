@@ -789,4 +789,38 @@ function timeConversion(s) {
     }
 }
 
+// Given a square matrix, calculate the absolute difference between the sums of its diagonals.
+function diagonalDifference(arr) {
+    // Write your code here
+    const matrix = arr;
+    const matrixReverse = structuredClone(matrix).reverse();
+    
+    const leftToRight = [];
+    const rightToLeft = [];
+
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+            // console.log(`matrix[${i}][${j}] = ${matrix[i][j]}`);
+            if (i === j) {
+                const addPoint = matrix[i][j];
+                leftToRight.push(addPoint);
+            }
+        }
+    }
+
+    for (let i = 0; i < matrixReverse.length; i++) {
+        for (let j = 0; j < matrixReverse[i].length; j++) {
+            // console.log(`matrixReverse[${i}][${j}] = ${matrixReverse[i][j]}`);
+            if (i === j) {
+                const addPoint = matrixReverse[i][j];
+                rightToLeft.push(addPoint);
+            }
+        }
+    }
+    
+    const diff = leftToRight.reduce((a, b) => a + b, 0) - rightToLeft.reduce((a, b) => a + b, 0)
+    
+    return Math.abs(diff)
+}
+
 
