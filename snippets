@@ -823,4 +823,19 @@ function diagonalDifference(arr) {
     return Math.abs(diff)
 }
 
+// pangram
+function pangrams(s) {
+    // Write your code here
+    const lowercaseAlphabet = [...Array(26)].map((_, i) =>
+    String.fromCharCode(97 + i)
+    );
+    
+    const check = lowercaseAlphabet
+    .map(char => {
+        return s.toLowerCase().includes(char);
+    })
+    .filter(item => !item);
+    return check.length > 0 ? 'not pangram' : 'pangram'
+}
+
 
